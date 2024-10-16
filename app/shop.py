@@ -6,7 +6,7 @@ class Shop:
             self,
             name: str,
             location: list[int, int],
-            products: dict[str: int | float]
+            products: dict[str, int | float]
     ) -> None:
         self.name = name
         self.location = location
