@@ -6,7 +6,7 @@ class Customer:
             self,
             name: str,
             product_cart: dict,
-            location: list[int],
+            location: list[int, int],
             money: int | float
     ) -> None:
         self.name = name
@@ -23,7 +23,7 @@ class Customer:
 
     def cost_of_all_trips(
             self,
-            stores: list,
+            stores: list[dict],
             fuel_consumption: float,
             fuel_price: float
     ) -> None:
@@ -42,7 +42,7 @@ class Customer:
             print(f"{self.name}'s trip to the {shop.name} costs {total_cost}")
 
     def choose_the_shop(self) -> None:
-        minimum_cost = min(list(self.trip_costs.keys()))
+        minimum_cost = min(self.trip_costs.keys())
         if self.money < minimum_cost:
             print(f"{self.name} doesn't have "
                   f"enough money to make a purchase in any shop")

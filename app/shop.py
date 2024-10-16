@@ -5,8 +5,8 @@ class Shop:
     def __init__(
             self,
             name: str,
-            location: list[int],
-            products: dict
+            location: list[int, int],
+            products: dict[str: int | float]
     ) -> None:
         self.name = name
         self.location = location
@@ -24,7 +24,7 @@ class Shop:
                 self.each_product_cost[product] = product_cost
                 self.total_cost += product_cost
             except KeyError:
-                print("There is no such product at store!")
+                raise KeyError("There is no such product at store!")
         return self.total_cost
 
     def receipt(self, customer_name: str, product_cart: dict) -> None:
@@ -37,5 +37,6 @@ class Shop:
                 print(f"{product_cart[product]} {product}s "
                       f"for {self.each_product_cost[product]} dollars")
             except KeyError:
-                print("Products in your cart and in receipt doesn't match!")
+                raise KeyError("Products in your cart and "
+                               "products in receipt doesn't match!")
         print(f"Total cost is {self.total_cost} dollars\nSee you again!\n")
