@@ -18,7 +18,8 @@ class Shop:
         for product in product_cart:
             try:
                 product_cost = product_cart[product] * self.products[product]
-                if product_cost.is_integer():
+                if (isinstance(product_cost, float)
+                        and product_cost.is_integer()):
                     product_cost = int(product_cost)
                 self.each_product_cost[product] = product_cost
                 self.total_cost += product_cost
