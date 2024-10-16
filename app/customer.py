@@ -12,7 +12,7 @@ class Customer:
         self.name = name
         self.product_cart = product_cart
         self.home_location = location
-        self.location = location
+        self.location = self.home_location
         self.money = money
         self.trip_costs = {}
         self.chosen_shop = None
@@ -23,15 +23,15 @@ class Customer:
 
     def cost_of_all_trips(
             self,
-            shops: list,
+            stores: list,
             fuel_consumption: float,
             fuel_price: float
     ) -> None:
-        for shop in shops:
+        for store in stores:
             shop = Shop(
-                name=shop["name"],
-                location=shop["location"],
-                products=shop["products"]
+                name=store["name"],
+                location=store["location"],
+                products=store["products"]
             )
             distance = (((shop.location[0] - self.location[0]) ** 2)
                         + ((shop.location[1] - self.location[1]) ** 2)) ** 0.5

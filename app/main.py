@@ -4,10 +4,10 @@ from app.car import Car
 
 
 def shop_trip() -> None:
-    with open(r"app\config.json") as file:
+    with open(r"app/config.json") as file:
         trip_data = json.load(file)
     customers = trip_data["customers"]
-    shops = trip_data["shops"]
+    stores = trip_data["shops"]
     for customer in customers:
         customer_instance = Customer(
             name=customer["name"],
@@ -21,7 +21,7 @@ def shop_trip() -> None:
         )
         customer_instance.amount_of_money_at_start()
         customer_instance.cost_of_all_trips(
-            shops=shops,
+            stores=stores,
             fuel_consumption=car.fuel_consumption,
             fuel_price=trip_data["FUEL_PRICE"]
         )
